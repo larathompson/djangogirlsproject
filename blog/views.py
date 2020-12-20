@@ -6,4 +6,5 @@ from .models import Post
 def post_list(request):
   #this returns the value it gets from calling another functoin called render
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'blog/post_list.html', {})
+    # we are passing the posts in for the templates to use
+    return render(request, 'blog/post_list.html', {'posts': posts})
